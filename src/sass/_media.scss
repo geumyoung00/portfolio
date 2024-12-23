@@ -1,0 +1,44 @@
+@import "./mixin";
+@import './var';
+
+// 노트북에서 데스크탑
+@include desktopToLaptop {
+    div {
+        background: $colorBlue;
+    }
+}
+
+// 노트북
+@include laptop {
+    div {
+        background: $colorMagenta;
+    }
+}
+
+// 태블릿에서 노트북
+@include laptopToTablet {
+    div {
+        background: $colorViolet;
+    }
+}
+
+// 태블릿
+@include tablet {
+    div {
+        background: $colorYellow;
+    }
+}
+
+// 모바일에서 태블릿
+@include tabletToMobile {
+    div {
+        background: $colorBlue;
+    }
+}
+
+// 모바일
+@include mobile {
+    div {
+        background: $colorMagenta;
+    }
+}

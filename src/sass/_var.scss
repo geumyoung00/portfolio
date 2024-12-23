@@ -1,0 +1,14 @@
+// color setting
+$colorBlack : #0A0A14;
+$colorBlue : #00FFFF;
+$colorMagenta: #FF00FF;
+$colorViolet: #8000FF;
+$colorYellow: #EEFF00;
+
+// 반응형 break-point
+$breakpoint-mobile: 335px; // 모바일
+$breakpoint-tabletToMobile: 535px; // 모바일에서 태블릿
+$breakpoint-tablet: 720px; // 태블릿
+$breakpoint-laptopToTablet: 960px; // 태블릿에서 노트북
+$breakpoint-laptop: 1024px; // 노트북
+$breakpoint-desktopToLaptop: 1440px; // 노트북에서 데스크탑
