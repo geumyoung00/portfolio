@@ -1,3 +1,74 @@
-div {
+body {
+    background: $colorBlack;
+    color: #fff;
+
+    * {
+        box-sizing: border-box;
+    }
+}
+
+header,
+main {
+    margin: 0 auto;
+    padding: 0 4rem;
+}
+
+.header {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
     font-size: 3rem;
+    align-items: center;
+    width: 100vw;
+    height: 7.8rem;
+    backdrop-filter: blur(2px);
+    z-index: 100;
+
+    h1 {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        font-size: 4rem;
+        font-weight: 800;
+
+        svg {
+            width: 4.2rem;
+            height: 4.2rem;
+        }
+
+        span {
+            visibility: hidden;
+            text-indent: -9999px;
+        }
+    }
+
+    nav {
+        display: flex;
+        justify-content: flex-end;
+
+        .menu {
+            font-size: 2.4rem;
+            margin-left: $spaceSmall;
+            font-weight: 600;
+
+            &.on {
+                color: $colorViolet;
+            }
+        }
+    }
+}
+
+main {
+    margin-bottom: 8rem;
+}
+
+.footer {
+    font-size: 1.2rem;
+    line-height: 1;
+    font-weight: 500;
+    color: $colorBlack;
+    text-align: center;
+    width: 100%;
+    background: $colorYellow;
+    padding: $spaceSmall 0;
 }

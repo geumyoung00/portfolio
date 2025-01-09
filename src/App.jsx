@@ -1,5 +1,5 @@
-import '@style/style.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import '@style/style.css';
 import RootLayout from './pages/RootLayout';
 import Home from './pages/Home';
 
@@ -11,6 +11,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+        children: [{}],
       },
     ],
   },

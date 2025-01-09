@@ -5,6 +5,14 @@ $colorMagenta: #FF00FF;
 $colorViolet: #8000FF;
 $colorYellow: #EEFF00;
 
+//space size
+$spaceMin: .8rem;
+$spaceSmall: 1.2rem;
+$spaceRegular: 1.6rem;
+$spaceMedium: 2.4rem;
+$spaceLarge: 3.2rem;
+$spaceMax: 4rem;
+
 // 반응형 break-point
 $breakpoint-mobile: 335px; // 모바일
 $breakpoint-tabletToMobile: 535px; // 모바일에서 태블릿

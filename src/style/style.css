@@ -1,34 +1,109 @@
-div {
-  font-size: 3rem;
+body {
+  background: #0A0A14;
+  color: #fff;
+}
+body * {
+  box-sizing: border-box;
 }
 
-@media (min-width: 1440px) and (max-width: 1439px) {
-  div {
-    background: #00FFFF;
-  }
+header,
+main {
+  margin: 0 auto;
+  padding: 0 4rem;
 }
-@media (min-width: 1024px) and (max-width: 1439px) {
-  div {
-    background: #FF00FF;
-  }
+
+.header {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  font-size: 3rem;
+  align-items: center;
+  width: 100vw;
+  height: 7.8rem;
+  backdrop-filter: blur(2px);
+  z-index: 100;
 }
-@media (min-width: 960px) and (max-width: 1023px) {
-  div {
-    background: #8000FF;
-  }
+.header h1 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 4rem;
+  font-weight: 800;
 }
-@media (min-width: 720px) and (max-width: 959px) {
-  div {
-    background: #EEFF00;
+.header h1 svg {
+  width: 4.2rem;
+  height: 4.2rem;
+}
+.header h1 span {
+  visibility: hidden;
+  text-indent: -9999px;
+}
+.header nav {
+  display: flex;
+  justify-content: flex-end;
+}
+.header nav .menu {
+  font-size: 2.4rem;
+  margin-left: 1.2rem;
+  font-weight: 600;
+}
+.header nav .menu.on {
+  color: #8000FF;
+}
+
+main {
+  margin-bottom: 8rem;
+}
+
+.footer {
+  font-size: 1.2rem;
+  line-height: 1;
+  font-weight: 500;
+  color: #0A0A14;
+  text-align: center;
+  width: 100%;
+  background: #EEFF00;
+  padding: 1.2rem 0;
+}
+
+@media (min-width: 335px) and (max-width: 534px) {
+  header,
+  main {
+    margin: 0 auto;
+    padding: 0 2rem;
   }
 }
 @media (min-width: 535px) and (max-width: 719px) {
-  div {
-    background: #00FFFF;
+  header,
+  main {
+    padding: 0 4rem;
+  }
+  .header {
+    height: 10rem;
+  }
+  .header h1 svg {
+    width: 6rem;
+    height: 6rem;
+  }
+  .header nav .menu {
+    font-size: 3rem;
   }
 }
-@media (min-width: 335px) and (max-width: 534px) {
-  div {
-    background: #FF00FF;
+@media (min-width: 720px) and (max-width: 959px) {
+  header,
+  main {
+    padding: 0 4rem;
+  }
+}
+@media (min-width: 960px) and (max-width: 1024px) {
+  header,
+  main {
+    padding: 0 5rem;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1439px) {
+  header,
+  main {
+    padding: 0 4rem;
   }
 }

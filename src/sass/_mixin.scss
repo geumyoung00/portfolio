@@ -23,7 +23,7 @@
 
 // 태블릿에서 노트북 : 최소 '태블릿에서 노트북'사이즈부터 ~ 최대 '노트북'사이즈까지
 @mixin laptopToTablet {
-    @media (min-width: #{$breakpoint-laptopToTablet}) and (max-width: #{$breakpoint-laptop - 1px}) {
+    @media (min-width: #{$breakpoint-laptopToTablet}) and (max-width: #{$breakpoint-laptop}) {
         @content;
     }
 }
