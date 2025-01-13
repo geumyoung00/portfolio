@@ -8,16 +8,13 @@ body {
     }
 }
 
-header {
-    padding: 0 4rem;
-}
-
 .header {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
     font-size: 3rem;
     align-items: center;
+    padding: 0 4rem;
     width: 100%;
     height: 10.8rem;
     backdrop-filter: blur(2px);
@@ -43,7 +40,7 @@ header {
         justify-content: flex-end;
 
         .menu {
-            font-size: 2.4rem;
+            font-size: 3rem;
             margin-left: $spaceSmall;
             font-weight: 600;
 
@@ -57,23 +54,40 @@ header {
 main {
     display: flex;
     flex-direction: column;
-    grid-row-gap: 8rem;
+    width: 100vw;
+    overflow-x: hidden;
 
     section {
-        width: 80%;
+        width: 1100px;
         margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-column-gap: $spaceMedium;
 
         &#visual {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
             position: relative;
-            height: calc(100vh - 18.8rem);
+            height: calc(100vh - 10rem);
+
+            .image-box {
+                grid-column: 1/13;
+                width: 100%;
+                height: calc(100% - 14rem);
+                display: flex;
+                align-items: center;
+                position: absolute;
+                left: 50%;
+                top: 0;
+                transform: translateX(-50%);
+                z-index: -1;
+            }
 
             h2 {
                 font-size: 16rem;
                 font-weight: 900;
                 line-height: 1;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
 
                 strong {
                     display: block;
@@ -84,41 +98,32 @@ main {
                 }
             }
 
-            .image-box {
-                width: 100%;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                z-index: -1;
+            .photo {
+                display: block;
+                width: 660px;
+                height: 600px;
+                margin: 0 auto;
+                background: gray;
+            }
 
-                .photo {
-                    display: block;
-                    width: 660px;
-                    height: 600px;
-                    margin: 0 auto;
-                    background: gray;
-                }
+            i {
+                display: block;
 
-                i {
-                    display: block;
-
-                    svg {
-                        width: 100%;
-                        height: 100%;
-                    }
-                }
-
-                .svg-box {
-                    display: flex;
-                    flex-flow: row wrap;
-                    align-items: center;
+                svg {
                     width: 100%;
                     height: 100%;
-                    position: absolute;
-                    top: 0;
-                    z-index: -1;
                 }
+            }
+
+            .svg-box {
+                display: flex;
+                flex-flow: row wrap;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                z-index: -1;
 
                 .sparkle {
                     svg {
@@ -159,16 +164,15 @@ main {
 }
 
 .contact {
-    min-height: 0;
-    width: 100%;
-    height: 10rem;
-    position: sticky;
-    bottom: 0;
-    background: $colorYellow;
-    color: $colorBlack;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 100%;
+    height: 10rem;
+    background: $colorYellow;
+    color: $colorBlack;
+    margin-top: -10rem;
+    z-index: 10;
 
     .inner {
         display: grid;
@@ -176,7 +180,7 @@ main {
         grid-column-gap: 2.4rem;
         align-items: center;
         justify-content: space-between;
-        width: 80%;
+        width: 1100px;
         margin: 0 auto;
 
         h2 {
@@ -204,7 +208,8 @@ main {
         .loop-box {
             grid-column: 4/13;
             display: flex;
-            flex-flow: row wrap;
+            justify-content: center;
+            align-items: center;
             font-size: 2.8rem;
             font-weight: 500;
             grid-column-gap: 5.6rem;
