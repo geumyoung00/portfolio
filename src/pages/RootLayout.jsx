@@ -1,14 +1,25 @@
-import { Outlet } from 'react-router-dom';
-import Header from '../common/Header';
-import Footer from '../common/Footer';
+import { Outlet, useParams } from 'react-router-dom';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const RootLayout = () => {
+  const params = useParams();
+  const { projectId } = params;
+
   return (
     <>
       <Header />
-      <main>
-        <Outlet />
-      </main>
+      {!projectId ? (
+        <>
+          <main>
+            <Outlet />
+          </main>
+        </>
+      ) : (
+        <div className='detail-wrap'>
+          <Outlet />
+        </div>
+      )}
       <Footer />
     </>
   );
