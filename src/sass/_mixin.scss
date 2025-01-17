@@ -1,1 +1,14 @@
 @import './var';
+
+@mixin margin-auto($top, $bottom) {
+    margin: $top auto $bottom;
+}
+
+@mixin line-ellipsis ($max-line) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $max-line; //ie 지원 안됨, 3줄 이상 말 줄임
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: keep-all;
+}
