@@ -115,7 +115,8 @@ function Home() {
             <ul>
               <li>
                 <p className='sub-title'>
-                  2021~2024 <strong>sub title</strong>
+                  <span>2021~2024</span>
+                  <strong>sub title</strong>
                 </p>
                 <p className='text'>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
@@ -126,7 +127,8 @@ function Home() {
               </li>
               <li>
                 <p className='sub-title'>
-                  2021~2024 <strong>sub title</strong>
+                  <span>2021~2024</span>
+                  <strong>sub title</strong>
                 </p>
                 <p className='text'>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas

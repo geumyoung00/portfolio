@@ -66,7 +66,8 @@ main {
 
 section {
     width: 1100px;
-    @include margin-auto(8rem, 8rem);
+    @include margin-auto(4rem, 4rem);
+    padding: 4rem 0;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-column-gap: $spaceMedium;
@@ -85,7 +86,15 @@ h3 {
     text-transform: uppercase;
     font-size: 5.2rem;
     font-weight: 800;
-    margin-bottom: 1.5rem
+    margin-bottom: 1.5rem;
+
+    &:has(span) {
+        span {
+            font-size: 2.4rem;
+            font-weight: 400;
+            margin-left: 1rem;
+        }
+    }
 }
 
 .sub-title {
@@ -270,14 +279,6 @@ h3 {
         height: fit-content;
         margin-bottom: calc($spaceMax * 3);
 
-        h3:has(span) {
-            span {
-                font-size: 2.4rem;
-                font-weight: 400;
-                margin-left: 1rem;
-            }
-        }
-
         &:nth-child(even) {
             grid-column: 1/7;
             width: calc(100% - 3.2rem);
@@ -286,14 +287,13 @@ h3 {
         &:nth-child(odd) {
             grid-column: 7/13;
             width: calc(100% - 3.2rem);
-            @include margin-auto(0, 0);
+            @include margin-auto(0, calc($spaceMax * 3));
             margin-right: 0;
         }
 
         &.basic {
             .text {
                 font-size: 2.4rem;
-                @include line-ellipsis(4)
             }
 
             .my-img {
@@ -355,7 +355,6 @@ h3 {
 
             .text {
                 display: -webkit-box;
-                @include line-ellipsis(2);
                 line-height: 1.4;
             }
         }
@@ -365,13 +364,17 @@ h3 {
                 display: grid;
                 grid-template-columns: repeat(1, 1fr 2fr);
                 grid-row-gap: .5rem;
-                margin-bottom: $spaceMedium;
+
+                &+li {
+                    margin-top: $spaceMedium;
+                }
             }
 
             .sub-title {
                 grid-column: 1/3;
                 display: grid;
                 grid-template-columns: repeat(1, 1fr 2fr);
+                margin-bottom: 0;
 
                 strong {
                     grid-column: 2/3;
@@ -380,7 +383,6 @@ h3 {
 
             .text {
                 grid-column: 2/3;
-                @include line-ellipsis(4);
             }
         }
 
