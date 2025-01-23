@@ -697,6 +697,7 @@
 
     h3 {
         font-size: 3.6rem;
+        line-height: 1.18;
         margin-bottom: $spaceMedium;
 
         &:has(span) {
@@ -797,6 +798,10 @@
             }
 
             &.basic {
+                .my-img {
+                    height: 28rem;
+                }
+
                 .text {
                     font-size: 1.6rem;
                 }
@@ -834,5 +839,30 @@
             height: 29rem;
             top: 17rem;
         }
+
+        .svg-box {
+            .sparkle {
+                &.left {
+                    width: 8.2rem;
+                    height: 8.2rem;
+                    left: -3.8rem;
+                    top: 60%;
+                }
+
+                &.right {
+                    width: 4.6rem;
+                    height: 4.6rem;
+                    top: 1.4rem;
+                }
+            }
+        }
+    }
+
+    h3 {
+        font-size: 3.4rem;
+    }
+
+    .sub-title {
+        font-size: 2.4rem;
     }
 }

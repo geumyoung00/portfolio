@@ -2,8 +2,22 @@ import Sparkle from '@assets/sparkle.svg?react';
 import Star from '@assets/star.svg?react';
 import Circle from '@assets/circle.svg?react';
 import Arrow from '@assets/arrow.svg?react';
+import ArrowHead from '@assets/arrowHead.svg?react';
+import { useState } from 'react';
+import { useRef } from 'react';
+import PROJECT_LIST from '@/components/constans';
 
 function Home() {
+  const [selectedId, setSelectedId] = useState('');
+  const listRef = useRef([]);
+  const handleProjectList = (index) => {
+    if (index === selectedId) {
+      return setSelectedId('');
+    } else {
+      return setSelectedId(index);
+    }
+  };
+
   return (
     <>
       <section id='visual'>
@@ -183,110 +197,43 @@ function Home() {
       <section id='project'>
         <h2>project</h2>
         <div className='list'>
-          <article>
-            <div className='title'>
-              <h3>project title1</h3>
-              <i className='arrow'>
-                <Arrow />
-              </i>
-            </div>
-            <div className='inner'>
-              <div className='contents'>
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Quaerat maxime necessitatibus labore ex recusandae voluptatum
-                  doloribus animi at! Explicabo nobis adipisci cupiditate
-                  necessitatibus laudantium. Ipsam alias porro impedit pariatur
-                  optio?
-                </p>
-                <div>
-                  <p>skill</p>
-                  <ul>
-                    <li></li>
-                  </ul>
+          {PROJECT_LIST.map(({ id, title, desc, url, img, skills }, index) => {
+            return (
+              <article
+                key={id}
+                ref={(el) => {
+                  listRef.current[index] = el;
+                }}
+                className={selectedId === index ? 'active' : ''}
+              >
+                <div className='title'>
+                  <button onClick={() => handleProjectList(index)}>
+                    <h3>{title + ' ' + index}</h3>
+                  </button>
+                  <a>
+                    <i className='arrow'>
+                      {/* <Arrow /> */}
+                      <ArrowHead />
+                    </i>
+                  </a>
                 </div>
-              </div>
-              <div className='project-img'></div>
-            </div>
-          </article>
-          <article>
-            <div className='title'>
-              <h3>project title2</h3>
-              <i className='arrow'>
-                <Arrow />
-              </i>
-            </div>
-            <div className='inner'>
-              <div className='contents'>
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Quaerat maxime necessitatibus labore ex recusandae voluptatum
-                  doloribus animi at! Explicabo nobis adipisci cupiditate
-                  necessitatibus laudantium. Ipsam alias porro impedit pariatur
-                  optio?
-                </p>
-                <div>
-                  <p>skill</p>
-                  <ul>
-                    <li></li>
-                  </ul>
+                <div className='inner'>
+                  <div className='contents'>
+                    <p className='text'>{desc}</p>
+                    <div className='badge-list'>
+                      <p>skill</p>
+                      <ul>
+                        {skills.map((el, index) => {
+                          return <li key={el + index}>{el}</li>;
+                        })}
+                      </ul>
+                    </div>
+                  </div>
+                  <div className='project-img'></div>
                 </div>
-              </div>
-              <div className='project-img'></div>
-            </div>
-          </article>
-          <article>
-            <div className='title'>
-              <h3>project title3</h3>
-              <i className='arrow'>
-                <Arrow />
-              </i>
-            </div>
-            <div className='inner'>
-              <div className='contents'>
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Quaerat maxime necessitatibus labore ex recusandae voluptatum
-                  doloribus animi at! Explicabo nobis adipisci cupiditate
-                  necessitatibus laudantium. Ipsam alias porro impedit pariatur
-                  optio?
-                </p>
-                <div>
-                  <p>skill</p>
-                  <ul>
-                    <li></li>
-                  </ul>
-                </div>
-              </div>
-              <div className='project-img'></div>
-            </div>
-          </article>
-          <article>
-            <div className='title'>
-              <h3>project title4</h3>
-              <i className='arrow'>
-                <Arrow />
-              </i>
-            </div>
-            <div className='inner'>
-              <div className='contents'>
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Quaerat maxime necessitatibus labore ex recusandae voluptatum
-                  doloribus animi at! Explicabo nobis adipisci cupiditate
-                  necessitatibus laudantium. Ipsam alias porro impedit pariatur
-                  optio?
-                </p>
-                <div>
-                  <p>skill</p>
-                  <ul>
-                    <li></li>
-                  </ul>
-                </div>
-              </div>
-              <div className='project-img'></div>
-            </div>
-          </article>
+              </article>
+            );
+          })}
         </div>
       </section>
     </>

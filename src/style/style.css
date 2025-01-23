@@ -1,6 +1,6 @@
 body {
   background: #0A0A14;
-  color: #fff;
+  color: #FFF;
   font-size: 1.6rem;
 }
 body * {
@@ -93,11 +93,25 @@ h3:has(span) span {
 }
 
 .text {
-  font-size: 2rem;
+  font-size: 2.4rem;
   font-weight: 400;
 }
 
 .badge-list {
+  display: flex;
+  flex-flow: row wrap;
+  grid-gap: 0.8rem;
+}
+.badge-list:has(ul) {
+  display: block;
+}
+.badge-list:has(ul) p {
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  margin: 1.2rem 0 1.6rem;
+}
+.badge-list:has(ul) ul {
   display: flex;
   flex-flow: row wrap;
   grid-gap: 0.8rem;
@@ -308,6 +322,7 @@ h3:has(span) span {
 #info article.work .text {
   display: -webkit-box;
   line-height: 1.4;
+  font-size: 2rem;
 }
 #info article.edu li {
   display: grid;
@@ -327,6 +342,7 @@ h3:has(span) span {
   grid-column: 2/3;
 }
 #info article.edu .text {
+  font-size: 2rem;
   grid-column: 2/3;
 }
 #info article.skills .box + .box {
@@ -337,7 +353,172 @@ h3:has(span) span {
 }
 
 #project {
-  display: none;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 11rem;
+}
+#project h2 {
+  font-size: 14rem;
+  font-weight: 1000;
+  text-transform: uppercase;
+  color: #EEFF00;
+  margin-bottom: 4rem;
+  line-height: 1.1;
+}
+#project .list {
+  border-bottom: 1px solid #FFF;
+}
+#project article {
+  padding: 0 4rem;
+  border-top: 1px solid #FFF;
+}
+#project article .title {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+#project article .title button {
+  width: 100%;
+  padding: 2.8rem 0;
+  text-align: left;
+}
+#project article .title button:hover {
+  cursor: pointer;
+}
+#project article .title h3 {
+  line-height: 1.2;
+  color: #FFF;
+  margin-bottom: 0;
+  transition: color 0.4s ease;
+}
+#project article .title a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 6.2rem;
+  height: 6.2rem;
+  border-radius: 50%;
+  position: absolute;
+  right: 0;
+  transform: rotate(90deg);
+  opacity: 1;
+  z-index: -1;
+  overflow: hidden;
+  transition: transform 0.4s ease;
+}
+#project article .title a::after {
+  display: block;
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #EEFF00;
+  border-radius: 50%;
+  z-index: -1;
+  transition: width 0.4s ease, height 0.4s ease;
+}
+#project article .title .arrow {
+  width: 4rem;
+  height: 3.2rem;
+  overflow: hidden;
+  position: relative;
+  left: -100%;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+#project article .title .arrow::after {
+  display: block;
+  content: "";
+  width: 0;
+  height: 2px;
+  background: #FFF;
+  position: absolute;
+  top: 50%;
+  right: 2px;
+  transform: translateY(-50%);
+}
+#project article .title .arrow svg {
+  width: auto;
+  fill: #FFF;
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%);
+  transition: fill 0.25s ease 0.15s, transform 0.4s ease;
+}
+#project article .title:hover .arrow {
+  left: 0;
+  opacity: 1;
+}
+#project article .inner {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  width: 100%;
+  height: 0rem;
+  padding-top: 0;
+  padding-bottom: 0;
+  overflow: hidden;
+  transition: all 0.6s ease;
+}
+#project article .inner .contents {
+  grid-column: 1/7;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#project article .inner .contents .badge-list {
+  margin: 1.2rem 0;
+}
+#project article .inner .project-img {
+  width: 100%;
+  height: 100%;
+  background: #EEFF00;
+  grid-column: 8/13;
+}
+#project article.active .title h3 {
+  color: #EEFF00;
+  transition: color 0.4s ease;
+}
+#project article.active .title a {
+  z-index: 1;
+  transform: rotate(0);
+  transition: transform 0.5s ease;
+  cursor: pointer;
+}
+#project article.active .title a::after {
+  width: 100%;
+  height: 100%;
+  transition: all 0.4s ease;
+}
+#project article.active .title .arrow {
+  left: 0;
+  opacity: 1;
+}
+#project article.active .title .arrow::after {
+  width: calc(100% - 2px);
+  left: 0;
+  right: auto;
+  background: #0A0A14;
+  transition: width 0.4s ease 0.3s;
+}
+#project article.active .title .arrow svg {
+  width: auto;
+  fill: #0A0A14;
+  position: absolute;
+  right: 50%;
+  transform: translateX(calc(100% + 2px));
+  opacity: 1;
+  transition: transform 0.3s ease 0.4s;
+}
+#project article.active .inner {
+  height: 40rem;
+  padding-top: 1rem;
+  padding-bottom: 6rem;
+  transition: all 0.6s ease 0.2s;
 }
 
 .footer {
@@ -857,6 +1038,7 @@ h3:has(span) span {
   }
   h3 {
     font-size: 3.6rem;
+    line-height: 1.18;
     margin-bottom: 2.4rem;
   }
   h3:has(span) span {
@@ -926,6 +1108,9 @@ h3:has(span) span {
   #info article:nth-child(even), #info article:nth-child(odd) {
     margin-bottom: 6.4rem;
   }
+  #info article.basic .my-img {
+    height: 28rem;
+  }
   #info article.basic .text {
     font-size: 1.6rem;
   }
@@ -946,5 +1131,22 @@ h3:has(span) span {
   #visual .photo {
     height: 29rem;
     top: 17rem;
+  }
+  #visual .svg-box .sparkle.left {
+    width: 8.2rem;
+    height: 8.2rem;
+    left: -3.8rem;
+    top: 60%;
+  }
+  #visual .svg-box .sparkle.right {
+    width: 4.6rem;
+    height: 4.6rem;
+    top: 1.4rem;
+  }
+  h3 {
+    font-size: 3.4rem;
+  }
+  .sub-title {
+    font-size: 2.4rem;
   }
 }

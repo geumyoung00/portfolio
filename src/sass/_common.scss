@@ -1,6 +1,6 @@
 body {
     background: $colorBlack;
-    color: #fff;
+    color: #FFF;
     font-size: 1.6rem;
 
     * {
@@ -105,7 +105,7 @@ h3 {
 }
 
 .text {
-    font-size: 2rem;
+    font-size: 2.4rem;
     font-weight: 400;
 }
 
@@ -113,6 +113,23 @@ h3 {
     display: flex;
     flex-flow: row wrap;
     grid-gap: $spaceMin;
+
+    &:has(ul) {
+        display: block;
+
+        p {
+            font-size: 2rem;
+            text-transform: uppercase;
+            font-weight: 800;
+            margin: $spaceSmall 0 $spaceRegular;
+        }
+
+        ul {
+            display: flex;
+            flex-flow: row wrap;
+            grid-gap: $spaceMin;
+        }
+    }
 
     &+.badge-list {
         margin-top: $spaceMin;
@@ -356,6 +373,7 @@ h3 {
             .text {
                 display: -webkit-box;
                 line-height: 1.4;
+                font-size: 2rem;
             }
         }
 
@@ -382,6 +400,7 @@ h3 {
             }
 
             .text {
+                font-size: 2rem;
                 grid-column: 2/3;
             }
         }
@@ -401,12 +420,203 @@ h3 {
 }
 
 #project {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 11rem;
+
+    h2 {
+        font-size: 14rem;
+        font-weight: 1000;
+        text-transform: uppercase;
+        color: $colorYellow;
+        margin-bottom: 4rem;
+        line-height: 1.1;
+    }
+
+    .list {
+        border-bottom: 1px solid #FFF;
+    }
+
+    article {
+        padding: 0 4rem;
+        border-top: 1px solid #FFF;
+
+        .title {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+
+            button {
+                width: 100%;
+                padding: 2.8rem 0;
+                text-align: left;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+            h3 {
+                line-height: 1.2;
+                color: #FFF;
+                margin-bottom: 0;
+                transition: color .4s ease;
+            }
+
+            a {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 6.2rem;
+                height: 6.2rem;
+                border-radius: 50%;
+                position: absolute;
+                right: 0;
+                transform: rotate(90deg);
+                opacity: 1;
+                z-index: -1;
+                overflow: hidden;
+                transition: transform .4s ease;
+
+                &::after {
+                    display: block;
+                    content: '';
+                    width: 0;
+                    height: 0;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: $colorYellow;
+                    border-radius: 50%;
+                    z-index: -1;
+                    transition: width .4s ease, height .4s ease;
+                }
+            }
+
+            .arrow {
+                width: 4rem;
+                height: 3.2rem;
+                overflow: hidden;
+                position: relative;
+                left: -100%;
+                opacity: 0;
+                transition: all .4s ease;
+
+                &::after {
+                    display: block;
+                    content: '';
+                    width: 0;
+                    height: 2px;
+                    background: #FFF;
+                    position: absolute;
+                    top: 50%;
+                    right: 2px;
+                    transform: translateY(-50%);
+                }
+
+                svg {
+                    width: auto;
+                    fill: #FFF;
+                    position: absolute;
+                    right: 50%;
+                    transform: translateX(50%);
+                    transition: fill .25s ease .15s, transform .4s ease;
+                }
+            }
+
+            &:hover {
+                .arrow {
+                    left: 0;
+                    opacity: 1;
+                }
+            }
+        }
+
+        .inner {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            width: 100%;
+            height: 0rem;
+            padding-top: 0;
+            padding-bottom: 0;
+            overflow: hidden;
+            transition: all .6s ease;
+
+            .contents {
+                grid-column: 1/7;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                .badge-list {
+                    margin: $spaceSmall 0;
+                }
+            }
+
+            .project-img {
+                width: 100%;
+                height: 100%;
+                background: $colorYellow;
+                grid-column: 8/13;
+            }
+        }
+
+        &.active {
+            .title {
+                h3 {
+                    color: $colorYellow;
+                    transition: color .4s ease;
+                }
+
+                a {
+                    z-index: 1;
+                    transform: rotate(0);
+                    transition: transform .5s ease;
+                    cursor: pointer;
+
+                    &::after {
+                        width: 100%;
+                        height: 100%;
+                        transition: all .4s ease;
+                    }
+                }
+
+                .arrow {
+                    left: 0;
+                    opacity: 1;
+
+                    &::after {
+                        width: calc(100% - 2px);
+                        left: 0;
+                        right: auto;
+                        background: $colorBlack;
+                        transition: width .4s ease .3s;
+                    }
+
+                    svg {
+                        width: auto;
+                        fill: $colorBlack;
+                        position: absolute;
+                        right: 50%;
+                        transform: translateX(calc(100% + 2px));
+                        opacity: 1;
+                        transition: transform .3s ease .4s;
+                    }
+                }
+            }
+
+            .inner {
+                height: 40rem;
+                padding-top: 1rem;
+                padding-bottom: 6rem;
+                transition: all .6s ease .2s;
+            }
+        }
+    }
 }
-
-// #info {}
-
-
 
 .footer {
     font-size: 1.2rem;
