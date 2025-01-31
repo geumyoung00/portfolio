@@ -104,12 +104,13 @@ h3:has(span) span {
 }
 .badge-list:has(ul) {
   display: block;
+  margin: 1.2rem 0;
 }
 .badge-list:has(ul) p {
   font-size: 2rem;
   text-transform: uppercase;
   font-weight: 800;
-  margin: 1.2rem 0 1.6rem;
+  margin-bottom: 1.6rem;
 }
 .badge-list:has(ul) ul {
   display: flex;
@@ -369,14 +370,19 @@ h3:has(span) span {
   border-bottom: 1px solid #FFF;
 }
 #project article {
-  padding: 0 4rem;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-column-gap: 2.4rem;
   border-top: 1px solid #FFF;
 }
 #project article .title {
+  grid-column: 1/13;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
+  width: calc(100% - 8rem);
+  margin: 0 auto 0;
   position: relative;
 }
 #project article .title button {
@@ -402,11 +408,11 @@ h3:has(span) span {
   border-radius: 50%;
   position: absolute;
   right: 0;
-  transform: rotate(90deg);
   opacity: 1;
   z-index: -1;
   overflow: hidden;
-  transition: transform 0.4s ease;
+  transform: rotate(90deg);
+  transition: transform 0.3s ease 0.3s;
 }
 #project article .title a::after {
   display: block;
@@ -420,64 +426,58 @@ h3:has(span) span {
   background: #EEFF00;
   border-radius: 50%;
   z-index: -1;
-  transition: width 0.4s ease, height 0.4s ease;
+  transition: width 0.4s ease 0.2s, height 0.4s ease 0.2s;
 }
 #project article .title .arrow {
   width: 4rem;
   height: 3.2rem;
   overflow: hidden;
   position: relative;
-  left: -100%;
-  opacity: 0;
-  transition: all 0.4s ease;
 }
-#project article .title .arrow::after {
-  display: block;
-  content: "";
-  width: 0;
-  height: 2px;
-  background: #FFF;
-  position: absolute;
-  top: 50%;
-  right: 2px;
-  transform: translateY(-50%);
-}
-#project article .title .arrow svg {
+#project article .title .arrow .arrow-head {
   width: auto;
+  opacity: 0;
   fill: #FFF;
   position: absolute;
-  right: 50%;
-  transform: translateX(50%);
-  transition: fill 0.25s ease 0.15s, transform 0.4s ease;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-250%) translateY(-50%);
+  transition: transform 0.3s ease, opacity 0.3s ease, left 0.3s ease, fill 0.3s ease 0.3s;
 }
-#project article .title:hover .arrow {
-  left: 0;
+#project article .title .arrow .arrow-line {
+  width: 0;
+  fill: #0A0A14;
+  transition: width 0.3s ease;
+}
+#project article .title:hover .arrow .arrow-head {
   opacity: 1;
+  transform: translateX(-50%) translateY(-50%);
 }
 #project article .inner {
+  grid-column: 1/13;
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  width: 100%;
+  grid-template-areas: "text img" "skills img";
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 2.4rem;
+  width: calc(100% - 8rem);
+  margin: 0 auto 0;
   height: 0rem;
-  padding-top: 0;
-  padding-bottom: 0;
+  padding: 0;
   overflow: hidden;
-  transition: all 0.6s ease;
+  transition: all 0.6s ease 0.2s;
 }
-#project article .inner .contents {
-  grid-column: 1/7;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+#project article .inner .text {
+  grid-area: text;
 }
-#project article .inner .contents .badge-list {
-  margin: 1.2rem 0;
+#project article .inner .badge-list {
+  grid-area: skills;
 }
 #project article .inner .project-img {
-  width: 100%;
+  grid-area: img;
   height: 100%;
+  margin-left: 2.4rem;
+  width: calc(100% - 2.4rem);
   background: #EEFF00;
-  grid-column: 8/13;
 }
 #project article.active .title h3 {
   color: #EEFF00;
@@ -485,40 +485,34 @@ h3:has(span) span {
 }
 #project article.active .title a {
   z-index: 1;
-  transform: rotate(0);
-  transition: transform 0.5s ease;
   cursor: pointer;
+  transform: rotate(0deg);
+  transition: transform 0.3s ease;
 }
 #project article.active .title a::after {
   width: 100%;
   height: 100%;
-  transition: all 0.4s ease;
 }
 #project article.active .title .arrow {
-  left: 0;
   opacity: 1;
 }
-#project article.active .title .arrow::after {
-  width: calc(100% - 2px);
-  left: 0;
-  right: auto;
-  background: #0A0A14;
-  transition: width 0.4s ease 0.3s;
-}
-#project article.active .title .arrow svg {
-  width: auto;
+#project article.active .title .arrow .arrow-head {
+  margin-top: 0;
+  left: auto;
+  right: 0;
+  transform: translateY(-50%) translateX(0);
+  opacity: 1;
   fill: #0A0A14;
-  position: absolute;
-  right: 50%;
-  transform: translateX(calc(100% + 2px));
-  opacity: 1;
-  transition: transform 0.3s ease 0.4s;
+  transition: right 0.3s ease 0.3s, transform 0.3s ease 0.3s;
+}
+#project article.active .title .arrow .arrow-line {
+  width: 100%;
+  transition: width 0.3s ease 0.3s;
 }
 #project article.active .inner {
   height: 40rem;
-  padding-top: 1rem;
-  padding-bottom: 6rem;
-  transition: all 0.6s ease 0.2s;
+  padding: 1rem 0 6rem;
+  transition: all 0.6s ease 0.3s;
 }
 
 .footer {
@@ -535,6 +529,15 @@ h3:has(span) span {
 @media (max-width: 1440px) {
   section {
     width: calc(100vw - 10rem);
+  }
+  .badge-list {
+    grid-row-gap: 1.2rem;
+  }
+  .badge-list:has(ul) ul {
+    grid-row-gap: 1rem;
+  }
+  .badge-list:has(ul) p {
+    font-size: 2.4rem;
   }
   #visual h2 {
     font-size: 13.2rem;
@@ -572,6 +575,45 @@ h3:has(span) span {
   }
   .contact .inner {
     width: calc(100vw - 10rem);
+  }
+  #project article .inner .badge-list {
+    margin-top: 6rem;
+  }
+}
+@media screen and (max-width: 1440px) and (max-width: 1180px) {
+  #project h2 {
+    font-size: 8rem;
+    margin-bottom: 3.2rem;
+  }
+  #project article .title {
+    width: calc(100% - 2.8rem - 2.8rem);
+  }
+  #project article .title h3 {
+    font-size: 4.4rem;
+    line-height: 1.3;
+  }
+  #project article .title button {
+    padding: 2.4rem 0;
+  }
+  #project article .title a {
+    width: 5.6rem;
+    height: 5.6rem;
+  }
+  #project article .title .arrow {
+    width: 3.4rem;
+  }
+  #project article .title .arrow svg {
+    width: 15px;
+  }
+  #project article .inner {
+    width: calc(100% - 5.6rem);
+  }
+  #project article .inner .project-img {
+    width: calc(100% - 2rem);
+    margin-left: 2rem;
+  }
+  #project article.active .inner {
+    height: 45rem;
   }
 }
 @media (max-width: 1024px) {
@@ -693,6 +735,21 @@ h3:has(span) span {
   #info article.skills .sub-title {
     margin-bottom: 1.2rem;
   }
+  #project article {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  #project article .title {
+    grid-column: 1/7;
+  }
+  #project article .inner {
+    grid-column: 1/7;
+  }
+  #project article .inner .badge-list {
+    margin-top: 3.2rem;
+  }
+  #project article.active .inner {
+    height: 38rem;
+  }
 }
 @media (max-width: 960px) {
   .header {
@@ -796,6 +853,38 @@ h3:has(span) span {
   }
   #info article.edu .text {
     grid-column: 3/7;
+  }
+  #project article {
+    display: flex;
+    flex-direction: column;
+  }
+  #project article .title {
+    width: calc(100% - 4rem);
+  }
+  #project article .title h3 {
+    font-size: 3.8rem;
+  }
+  #project article .title a {
+    width: 5rem;
+    height: 5rem;
+  }
+  #project article .title .arrow {
+    width: 2.8rem;
+  }
+  #project article .inner {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: calc(100% - 4rem);
+  }
+  #project article.active .title .arrow svg {
+    transform: translateX(100%);
+  }
+}
+@media screen and (min-device-width: 768px) and (max-device-width: 1366px) {
+  #project article .title .arrow {
+    left: 0;
+    opacity: 1;
   }
 }
 @media (max-width: 720px) {

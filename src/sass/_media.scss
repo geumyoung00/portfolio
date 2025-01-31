@@ -7,6 +7,20 @@
         width: calc(100vw - 10rem);
     }
 
+    .badge-list {
+        grid-row-gap: 1.2rem;
+
+        &:has(ul) {
+            ul {
+                grid-row-gap: 1rem;
+            }
+
+            p {
+                font-size: 2.4rem;
+            }
+        }
+    }
+
     #visual {
         h2 {
             font-size: 13.2rem;
@@ -60,6 +74,67 @@
         }
     }
 
+    #project {
+        article {
+            .inner {
+                .badge-list {
+                    margin-top: 6rem;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 1180px) {
+        #project {
+            h2 {
+                font-size: 8rem;
+                margin-bottom: 3.2rem;
+            }
+
+            article {
+                .title {
+                    width: calc(100% - 2.8rem - 2.8rem);
+
+                    h3 {
+                        font-size: 4.4rem;
+                        line-height: 1.3;
+                    }
+
+                    button {
+                        padding: $spaceMedium 0;
+                    }
+
+                    a {
+                        width: 5.6rem;
+                        height: 5.6rem;
+                    }
+
+                    .arrow {
+                        width: 3.4rem;
+
+                        svg {
+                            width: 15px;
+                        }
+                    }
+                }
+
+                .inner {
+                    width: calc(100% - 5.6rem);
+
+                    .project-img {
+                        width: calc(100% - 2rem);
+                        margin-left: 2rem;
+                    }
+                }
+
+                &.active {
+                    .inner {
+                        height: 45rem;
+                    }
+                }
+            }
+        }
+    }
 }
 
 //노트북 961px ~ 1024px
@@ -227,6 +302,31 @@
             }
         }
     }
+
+    #project {
+        article {
+            grid-template-columns: repeat(6, 1fr);
+
+            .title {
+                grid-column: 1/7;
+            }
+
+            .inner {
+                grid-column: 1/7;
+
+                .badge-list {
+                    margin-top: $spaceLarge;
+                }
+            }
+
+            &.active {
+                .inner {
+                    height: 38rem;
+                }
+            }
+        }
+
+    }
 }
 
 // 태블릿 721px ~ 960px
@@ -372,6 +472,61 @@
         }
     }
 
+    #project {
+        article {
+            display: flex;
+            flex-direction: column;
+
+            .title {
+                width: calc(100% - 4rem);
+
+                h3 {
+                    font-size: 3.8rem;
+                }
+
+                a {
+                    width: 5rem;
+                    height: 5rem;
+                }
+
+                .arrow {
+                    width: 2.8rem;
+                }
+            }
+
+            .inner {
+                display: flex;
+                flex-direction: column;
+                position: relative;
+                width: calc(100% - 4rem);
+            }
+
+            &.active {
+                .title {
+                    .arrow {
+                        svg {
+                            transform: translateX(100%);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-device-width: 768px) and (max-device-width: 1366px) {
+
+    //아이패드 only
+    #project {
+        article {
+            .title {
+                .arrow {
+                    left: 0;
+                    opacity: 1;
+                }
+            }
+        }
+    }
 }
 
 // 모바일에서 태블릿 536px ~ 720px

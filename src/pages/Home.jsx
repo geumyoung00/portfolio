@@ -1,7 +1,7 @@
 import Sparkle from '@assets/sparkle.svg?react';
 import Star from '@assets/star.svg?react';
 import Circle from '@assets/circle.svg?react';
-import Arrow from '@assets/arrow.svg?react';
+import ArrowLine from '@assets/arrowLine.svg?react';
 import ArrowHead from '@assets/arrowHead.svg?react';
 import { useState } from 'react';
 import { useRef } from 'react';
@@ -208,26 +208,24 @@ function Home() {
               >
                 <div className='title'>
                   <button onClick={() => handleProjectList(index)}>
-                    <h3>{title + ' ' + index}</h3>
+                    <h3>{title}</h3>
                   </button>
                   <a>
                     <i className='arrow'>
-                      {/* <Arrow /> */}
-                      <ArrowHead />
+                      <ArrowHead className='arrow-head' />
+                      <ArrowLine className='arrow-line' />
                     </i>
                   </a>
                 </div>
                 <div className='inner'>
-                  <div className='contents'>
-                    <p className='text'>{desc}</p>
-                    <div className='badge-list'>
-                      <p>skill</p>
-                      <ul>
-                        {skills.map((el, index) => {
-                          return <li key={el + index}>{el}</li>;
-                        })}
-                      </ul>
-                    </div>
+                  <p className='text'>{desc}</p>
+                  <div className='badge-list'>
+                    <p>skill</p>
+                    <ul>
+                      {skills.map((el, index) => {
+                        return <li key={el + index}>{el}</li>;
+                      })}
+                    </ul>
                   </div>
                   <div className='project-img'></div>
                 </div>
