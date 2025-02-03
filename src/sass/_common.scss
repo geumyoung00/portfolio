@@ -259,7 +259,7 @@ h3 {
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: -.4px;
-            text-align: center;
+            text-indent: $spaceMedium;
             grid-column: 1/4;
             position: relative;
 
@@ -373,8 +373,6 @@ h3 {
 
             .text {
                 display: -webkit-box;
-                line-height: 1.4;
-                font-size: 2rem;
             }
         }
 
@@ -401,7 +399,6 @@ h3 {
             }
 
             .text {
-                font-size: 2rem;
                 grid-column: 2/3;
             }
         }
@@ -503,7 +500,10 @@ h3 {
             }
 
             .arrow {
-                width: 4rem;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                width: 3.8rem;
                 height: 3.2rem;
                 overflow: hidden;
                 position: relative;
@@ -511,17 +511,19 @@ h3 {
                 .arrow-head {
                     width: auto;
                     opacity: 0;
-                    fill: #FFF;
+                    stroke: #FFF;
+                    stroke-width: 2px;
                     position: absolute;
                     left: 50%;
                     top: 50%;
                     transform: translateX(-250%) translateY(-50%);
-                    transition: transform .3s ease, opacity .3s ease, left .3s ease, fill .3s ease .3s;
+                    transition: transform .3s ease, opacity .3s ease, left .3s ease, stroke .3s ease .3s;
                 }
 
                 .arrow-line {
                     width: 0;
-                    fill: $colorBlack;
+                    stroke-width: 2px;
+                    stroke: $colorBlack;
                     transition: width .3s ease;
                 }
             }
@@ -550,7 +552,7 @@ h3 {
             height: 0rem;
             padding: 0;
             overflow: hidden;
-            transition: all 0.6s ease .2s;
+            transition: all 0.6s ease .3s;
 
             .text {
                 grid-area: text;
@@ -598,8 +600,8 @@ h3 {
                         right: 0;
                         transform: translateY(-50%) translateX(0);
                         opacity: 1;
-                        fill: $colorBlack;
-                        transition: right .3s ease .3s, transform .3s ease .3s;
+                        stroke: $colorBlack;
+                        transition: right .3s ease .3s, transform .3s ease .3s, fill .3s ease .3s;
                     }
 
                     .arrow-line {
@@ -612,7 +614,6 @@ h3 {
             .inner {
                 height: 40rem;
                 padding: 1rem 0 6rem;
-                transition: all .6s ease .3s;
             }
         }
     }
