@@ -152,7 +152,7 @@ function Home() {
                   <button onClick={() => handleProjectList(index)}>
                     <h3>{title}</h3>
                   </button>
-                  <Link src={src}>
+                  <Link to={src} target='_blank'>
                     <i className='arrow'>
                       <ArrowHead className='arrow-head' />
                       <ArrowLine className='arrow-line' />
